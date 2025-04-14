@@ -38,23 +38,20 @@ namespace Lab_7 {
             }
 
             public static void SetPlaces(Participant[] participants) {
-                if (participants == null) return;
+                if (participants == null || participants.Length == 0) return;
                 
+                var validParticipants = participants.Where(x => x.Marks != null && x.Places != null).ToArray();
+                var invalidParticipants = participants.Where(x => x.Marks == null || x.Places == null).ToArray();
+
                 for (int judge = 0; judge < 7; judge++) {
-                    var sortedParticipants = participants.Where(x => x.Marks != null && x.Places != null)
-                                                         .OrderByDescending(x => x.Marks[judge]).ToArray(); 
+                    validParticipants = validParticipants.OrderByDescending(x => x.Marks[judge]).ToArray(); 
 
-                    for (int p = 0; p < sortedParticipants.Length; p++) 
-                        sortedParticipants[p]._places[judge] = p + 1;
-
-                    if (judge == 6) {
-                        sortedParticipants = sortedParticipants.Concat(
-                                            participants.Where(x => x.Marks == null || x.Places == null)
-                                            ).ToArray();
-                        Array.Copy(sortedParticipants, participants, participants.Length);
-                    }
+                    for (int p = 0; p < validParticipants.Length; p++) 
+                        validParticipants[p]._places[judge] = p + 1;
                 }
 
+                validParticipants = validParticipants.Concat(invalidParticipants).ToArray();
+                Array.Copy(validParticipants, participants, participants.Length);
             }
 
             public static void Sort(Participant[] array) {

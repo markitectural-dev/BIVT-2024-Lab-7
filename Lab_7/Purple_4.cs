@@ -157,6 +157,9 @@ namespace Lab_7 {
                 var sortedSkiMen = _sportsmen.Where(s => s is SkiMan).OrderBy(m => m.Time);
                 var sortedSkiWomen = _sportsmen.Where(s => s is SkiWoman).OrderBy(m => m.Time);
 
+                if (sortedSkiMen.Count() == 0 || sortedSkiWomen.Count() == 0) 
+                    return;
+
                 int skiMenCount = sortedSkiMen.Count();
                 int skiWomenCount = sortedSkiWomen.Count(); 
 
@@ -166,8 +169,11 @@ namespace Lab_7 {
                     remaining = sortedSkiMen.Skip(skiWomenCount);
                 else if (skiWomenCount > skiMenCount)
                     remaining = sortedSkiWomen.Skip(skiMenCount);
-        
-                _sportsmen = sortedSkiMen.Zip(sortedSkiWomen)
+
+
+                bool menFirst = sortedSkiMen.First().Time <= sortedSkiWomen.First().Time;
+
+                _sportsmen = (menFirst ? sortedSkiMen.Zip(sortedSkiWomen) : sortedSkiWomen.Zip(sortedSkiMen))
                                          .SelectMany(s => new Sportsman[] {s.First, s.Second})
                                          .Concat(remaining)
                                          .ToArray();
