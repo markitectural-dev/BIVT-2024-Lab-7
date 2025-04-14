@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Fa5EIt8E2W0=",
+  "dgSpecHash": "pS2HckBJ1E0=",
   "success": true,
   "projectFilePath": "C:\\Users\\Mi\\Desktop\\Visual Studio Code Projects\\BIVT-2024-Lab-7\\Lab_7\\Lab_7.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Mi\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.14\\microsoft.netcore.app.ref.8.0.14.nupkg.sha512",
+    "C:\\Users\\Mi\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.14\\microsoft.windowsdesktop.app.ref.8.0.14.nupkg.sha512",
+    "C:\\Users\\Mi\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.14\\microsoft.aspnetcore.app.ref.8.0.14.nupkg.sha512",
+    "C:\\Users\\Mi\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.14\\microsoft.netcore.app.host.win-x64.8.0.14.nupkg.sha512"
+  ],
   "logs": []
 }

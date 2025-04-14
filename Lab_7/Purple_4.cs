@@ -59,8 +59,7 @@ namespace Lab_7 {
             private string _name;
             private Sportsman[] _sportsmen;
             public string Name => _name;
-            public Sportsman[] Sportsmen 
-                => (_sportsmen == null) ? _sportsmen : (Sportsman[])_sportsmen.Clone(); 
+            public Sportsman[] Sportsmen => _sportsmen;
 
             public Group(string name) {
                 _name = name;

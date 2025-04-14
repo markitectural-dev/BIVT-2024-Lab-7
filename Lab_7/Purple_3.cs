@@ -49,7 +49,7 @@ namespace Lab_7 {
 
                     if (judge == 6) {
                         sortedParticipants = sortedParticipants.Concat(
-                                            participants.Where(x => x.Marks == null)
+                                            participants.Where(x => x.Marks == null || x.Places == null)
                                             ).ToArray();
                         Array.Copy(sortedParticipants, participants, participants.Length);
                     }
@@ -95,8 +95,7 @@ namespace Lab_7 {
         public abstract class Skating {
             private Participant[] _participants;
             protected double[] _moods;
-            public Participant[] Participants 
-                => (_participants == null) ? _participants : (Participant[])_participants.Clone();
+            public Participant[] Participants => _participants;
             public double[] Moods 
                 => (_moods == null) ? _moods : (double[])_moods.Clone();
 
